@@ -1,2 +1,5 @@
 # week2_test
-blackjack game
+Meir
+Gerby
+arava
+211740774
