@@ -8,13 +8,10 @@ def calculate_hand_value(hand: list[dict]) -> int:
 
     rank = hand[-1]['rank']
     value = None
-    if rank in cards_value:
+    if hand[-1]['rank'] in cards_value:
         value = cards_value[rank]
 
     return value
-
-
-
 
 
 def deal_two_each(deck: list[dict], player: dict, dealer: dict) -> None:
@@ -29,9 +26,6 @@ def deal_two_each(deck: list[dict], player: dict, dealer: dict) -> None:
 
     print(f"the first values in the player's deck is {p1_value}.")
     print(f"the first values in the dealer's deck is {p2_value}.")
-
-
-    return None
 
 
 def dealer_play(deck: list[dict], dealer: dict) -> bool:
@@ -52,7 +46,7 @@ def run_full_game(deck: list[dict], player: dict, dealer: dict) -> None:
     deal_two_each(deck, player, dealer)
     user_input = player_io.ask_player_action()
     while user_input == 'H':
-        player["hand"] = deck[-1]
+        player["hand"].append(deck[-1])
         deck.pop()
         p_value = calculate_hand_value(player["hand"])
         if p_value > 21:
@@ -73,3 +67,5 @@ def run_full_game(deck: list[dict], player: dict, dealer: dict) -> None:
 
             else:
                 print(f"no one won:\n player's score: {player_value} dealer's score: {dealer_value}")
+    return None
+
